@@ -1,0 +1,1 @@
+sudo kubectl get svc -A -o jsonpath='{range .items[*]}{.metadata.namespace}{"."}{.metadata.name}{": "}{.spec.ports[*].nodePort}{"\n"}{end}' | grep -v 'default.' | grep -v 'kube-system.' | grep -v 'kuboard.' | sort
